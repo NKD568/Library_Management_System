@@ -1,0 +1,15 @@
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\bin\Debug\Library_Management_App.exe.config
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\bin\Debug\Library_Management_App.exe
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\bin\Debug\Library_Management_App.pdb
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.csprojAssemblyReference.cache
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.Form1.resources
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.FORMS.frm_Login.resources
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.Properties.Resources.resources
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.csproj.GenerateResource.cache
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.csproj.CoreCompileInputs.cache
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.exe
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.pdb
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.FORMS.frm_Home.resources
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\bin\Debug\vi\Library_Management_App.resources.dll
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\Library_Management_App.FORMS.frm_Home.vi.resources
+D:\KayDeeData\Learn\School\Desktop_Development\Library_Management_System\Library_Management_App\obj\Debug\vi\Library_Management_App.resources.dll
