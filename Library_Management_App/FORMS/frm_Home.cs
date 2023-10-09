@@ -19,13 +19,27 @@ namespace Library_Management_App.FORMS
 
         private void frm_Home_Load(object sender, EventArgs e)
         {
+            this.CenterToScreen();
+
             pic_Logo.Image = Image.FromFile("../../IMAGES/ic_books.png");
             btn_Book.Image = Image.FromFile("../../IMAGES/ic_book.png");
             btn_Patron.Image = Image.FromFile("../../IMAGES/ic_patrons.png");
-            btn_Ticket.Image = Image.FromFile("../../IMAGES/ic_ticket.png");
-            btn_Statistic.Image = Image.FromFile("../../IMAGES/ic_statistic.png");
+            btn_Ticket.Image = Image.FromFile("../../IMAGES/ic_ticket.png");       
+            btn_Chart.Image = Image.FromFile("../../IMAGES/ic_statistic.png");
 
-            this.CenterToScreen();
+ 
+
+        }
+
+        private void btn_Book_Click(object sender, EventArgs e)
+        {
+            frm_Books formBook = new frm_Books();
+
+            formBook.Show();
+        }
+
+        private void btn_Ticket_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -35,5 +49,7 @@ namespace Library_Management_App.FORMS
             frm_Login login = new frm_Login();
             login.Show();
         }
+
+
     }
 }

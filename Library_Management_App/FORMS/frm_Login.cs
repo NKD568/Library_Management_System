@@ -24,7 +24,11 @@ namespace Library_Management_App.FORMS
         {
             TextBox txt = (TextBox)sender;
             if (txt.Text == placeholderName || txt.Text == placeholderPassword)
+            {
                 txt.Text = "";
+                if (txt.Name == txt_Password.Name)
+                    txt.PasswordChar = '*';
+            }     
             else
                 return;
         }
@@ -39,16 +43,27 @@ namespace Library_Management_App.FORMS
                 if (txt.Name == txt_Name.Name)
                     txt.Text = placeholderName;
                 if (txt.Name == txt_Password.Name)
+                {
+                    txt.PasswordChar = '\0';
                     txt.Text = placeholderPassword;
-            }
+                }
 
+            }
         }
 
         private void frm_Login_Load(object sender, EventArgs e)
         {
             this.BackgroundImage = Image.FromFile("../../IMAGES/bg_Login.jpg");
-
+            
             this.CenterToScreen();
+        }
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            if(txt_Name.Text == "root" && txt_Password.Text == "1")
+            {
+                this.Close();
+            }
         }
     }
 }

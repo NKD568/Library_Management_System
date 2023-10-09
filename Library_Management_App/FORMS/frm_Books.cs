@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Library_Management_App
+namespace Library_Management_App.FORMS
 {
-    public partial class Form1 : Form
+    public partial class frm_Books : Form
     {
-        public Form1()
+
+        Panel panelBook = new Panel();
+        public frm_Books()
         {
+
             InitializeComponent();
+        }
+
+        private void frm_Books_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
         }
     }
 }

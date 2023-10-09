@@ -45,18 +45,18 @@
             this.lbl_Login.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Login.Name = "lbl_Login";
             this.lbl_Login.Size = new System.Drawing.Size(320, 65);
-            this.lbl_Login.TabIndex = 1;
+            this.lbl_Login.TabIndex = 5;
             this.lbl_Login.Text = "ĐĂNG NHẬP";
             // 
             // txt_Name
             // 
             this.txt_Name.BackColor = System.Drawing.Color.Linen;
-            this.txt_Name.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Name.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Name.Location = new System.Drawing.Point(82, 189);
             this.txt_Name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(565, 49);
-            this.txt_Name.TabIndex = 2;
+            this.txt_Name.Size = new System.Drawing.Size(565, 50);
+            this.txt_Name.TabIndex = 1;
             this.txt_Name.Text = "Nhập tên ...";
             this.txt_Name.Enter += new System.EventHandler(this.emptyPlaceHolderText);
             this.txt_Name.Leave += new System.EventHandler(this.resetPlaceHolderText);
@@ -64,12 +64,12 @@
             // txt_Password
             // 
             this.txt_Password.BackColor = System.Drawing.Color.Linen;
-            this.txt_Password.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Password.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Password.Location = new System.Drawing.Point(82, 292);
             this.txt_Password.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Password.Name = "txt_Password";
-            this.txt_Password.Size = new System.Drawing.Size(565, 49);
-            this.txt_Password.TabIndex = 3;
+            this.txt_Password.Size = new System.Drawing.Size(565, 50);
+            this.txt_Password.TabIndex = 2;
             this.txt_Password.Text = "Nhập mật khẩu ...";
             this.txt_Password.Enter += new System.EventHandler(this.emptyPlaceHolderText);
             this.txt_Password.Leave += new System.EventHandler(this.resetPlaceHolderText);
@@ -85,10 +85,11 @@
             this.btn_Login.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(356, 51);
-            this.btn_Login.TabIndex = 4;
+            this.btn_Login.TabIndex = 0;
             this.btn_Login.Text = "ĐĂNG NHẬP  ";
             this.btn_Login.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btn_Login.UseVisualStyleBackColor = false;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // btn_Register
             // 
@@ -101,7 +102,7 @@
             this.btn_Register.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Register.Name = "btn_Register";
             this.btn_Register.Size = new System.Drawing.Size(356, 51);
-            this.btn_Register.TabIndex = 5;
+            this.btn_Register.TabIndex = 3;
             this.btn_Register.Text = "  ĐĂNG KÝ";
             this.btn_Register.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btn_Register.UseVisualStyleBackColor = false;
@@ -116,7 +117,7 @@
             this.btn_Forgot.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Forgot.Name = "btn_Forgot";
             this.btn_Forgot.Size = new System.Drawing.Size(356, 51);
-            this.btn_Forgot.TabIndex = 6;
+            this.btn_Forgot.TabIndex = 4;
             this.btn_Forgot.Text = "Quên Mật Khẩu?";
             this.btn_Forgot.UseVisualStyleBackColor = false;
             // 

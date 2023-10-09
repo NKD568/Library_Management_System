@@ -1,6 +1,6 @@
-﻿namespace Library_Management_App
+﻿namespace Library_Management_App.FORMS
 {
-    partial class Form1
+    partial class frm_Books
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // frm_Books
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 542);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(975, 523);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "frm_Books";
+            this.Text = "Kho Sách";
+            this.Load += new System.EventHandler(this.frm_Books_Load);
             this.ResumeLayout(false);
 
         }
@@ -44,4 +46,3 @@
         #endregion
     }
 }
-
