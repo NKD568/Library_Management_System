@@ -32,8 +32,8 @@
             this.txt_Name = new System.Windows.Forms.TextBox();
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.btn_Login = new System.Windows.Forms.Button();
-            this.btn_Register = new System.Windows.Forms.Button();
             this.btn_Forgot = new System.Windows.Forms.Button();
+            this.btn_ExitLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_Login
@@ -76,36 +76,20 @@
             // 
             // btn_Login
             // 
-            this.btn_Login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Login.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btn_Login.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Login.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_Login.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_Login.Location = new System.Drawing.Point(369, 458);
+            this.btn_Login.Location = new System.Drawing.Point(-1, 458);
             this.btn_Login.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_Login.Name = "btn_Login";
-            this.btn_Login.Size = new System.Drawing.Size(356, 51);
+            this.btn_Login.Size = new System.Drawing.Size(726, 51);
             this.btn_Login.TabIndex = 0;
             this.btn_Login.Text = "ĐĂNG NHẬP  ";
-            this.btn_Login.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btn_Login.UseVisualStyleBackColor = false;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
-            // 
-            // btn_Register
-            // 
-            this.btn_Register.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Register.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn_Register.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Register.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_Register.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btn_Register.Location = new System.Drawing.Point(4, 458);
-            this.btn_Register.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_Register.Name = "btn_Register";
-            this.btn_Register.Size = new System.Drawing.Size(356, 51);
-            this.btn_Register.TabIndex = 3;
-            this.btn_Register.Text = "  ĐĂNG KÝ";
-            this.btn_Register.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btn_Register.UseVisualStyleBackColor = false;
             // 
             // btn_Forgot
             // 
@@ -121,19 +105,31 @@
             this.btn_Forgot.Text = "Quên Mật Khẩu?";
             this.btn_Forgot.UseVisualStyleBackColor = false;
             // 
+            // btn_ExitLogin
+            // 
+            this.btn_ExitLogin.BackColor = System.Drawing.Color.Salmon;
+            this.btn_ExitLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ExitLogin.Location = new System.Drawing.Point(658, 2);
+            this.btn_ExitLogin.Name = "btn_ExitLogin";
+            this.btn_ExitLogin.Size = new System.Drawing.Size(67, 48);
+            this.btn_ExitLogin.TabIndex = 6;
+            this.btn_ExitLogin.Text = "X";
+            this.btn_ExitLogin.UseVisualStyleBackColor = false;
+            this.btn_ExitLogin.Click += new System.EventHandler(this.btn_ExitLogin_Click);
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(726, 512);
+            this.Controls.Add(this.btn_ExitLogin);
             this.Controls.Add(this.btn_Forgot);
-            this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.txt_Name);
             this.Controls.Add(this.lbl_Login);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frm_Login";
             this.Text = "Start Page";
@@ -149,7 +145,7 @@
         private System.Windows.Forms.TextBox txt_Name;
         private System.Windows.Forms.TextBox txt_Password;
         private System.Windows.Forms.Button btn_Login;
-        private System.Windows.Forms.Button btn_Register;
         private System.Windows.Forms.Button btn_Forgot;
+        private System.Windows.Forms.Button btn_ExitLogin;
     }
 }

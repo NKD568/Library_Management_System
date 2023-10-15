@@ -125,6 +125,43 @@
     <value>Top, Bottom, Left</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_User.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Semibold, 14pt, style=Bold</value>
+  </data>
+  <data name="btn_User.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_User.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 391</value>
+  </data>
+  <data name="btn_User.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 76</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btn_User.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btn_User.Text" xml:space="preserve">
+    <value>  Tài khoản</value>
+  </data>
+  <data name="btn_User.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btn_User.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btn_User.Name" xml:space="preserve">
+    <value>btn_User</value>
+  </data>
+  <data name="&gt;&gt;btn_User.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_User.Parent" xml:space="preserve">
+    <value>pan_Navigation</value>
+  </data>
+  <data name="&gt;&gt;btn_User.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btn_Chart.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 14pt, style=Bold</value>
   </data>
@@ -137,7 +174,6 @@
   <data name="btn_Chart.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 76</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btn_Chart.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -160,7 +196,7 @@
     <value>pan_Navigation</value>
   </data>
   <data name="&gt;&gt;btn_Chart.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btn_Ticket.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 14pt, style=Bold</value>
@@ -196,7 +232,7 @@
     <value>pan_Navigation</value>
   </data>
   <data name="&gt;&gt;btn_Ticket.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btn_Patron.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 14pt, style=Bold</value>
@@ -232,7 +268,7 @@
     <value>pan_Navigation</value>
   </data>
   <data name="&gt;&gt;btn_Patron.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btn_Book.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 14pt, style=Bold</value>
@@ -268,7 +304,7 @@
     <value>pan_Navigation</value>
   </data>
   <data name="&gt;&gt;btn_Book.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="pan_Navigation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 155</value>

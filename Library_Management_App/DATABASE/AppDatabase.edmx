@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Library_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publisher" Type="nchar" MaxLength="20" />
+          <Property Name="ISBN" Type="int" />
+          <Property Name="releaseDate" Type="date" Nullable="false" />
+          <Property Name="genre" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="condition" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="availability" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Checkout">
+          <Key>
+            <PropertyRef Name="checkout_ID" />
+          </Key>
+          <Property Name="checkout_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_ID" Type="int" Nullable="false" />
+          <Property Name="patron_ID" Type="int" Nullable="false" />
+          <Property Name="checkout_Date" Type="date" Nullable="false" />
+          <Property Name="due_Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patrons">
+          <Key>
+            <PropertyRef Name="patron_ID" />
+          </Key>
+          <Property Name="patron_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfos">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_level" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Checkout_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Checkout" Type="Self.Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="book_ID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Checkout_Patrons">
+          <End Role="Patrons" Type="Self.Patrons" Multiplicity="1" />
+          <End Role="Checkout" Type="Self.Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrons">
+              <PropertyRef Name="patron_ID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="patron_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Library_ManagementModelStoreContainer">
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Checkout" EntityType="Self.Checkout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patrons" EntityType="Self.Patrons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfos" EntityType="Self.UserInfos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Checkout_Books" Association="Self.FK_Checkout_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Checkout" EntitySet="Checkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Checkout_Patrons" Association="Self.FK_Checkout_Patrons">
+            <End Role="Patrons" EntitySet="Patrons" />
+            <End Role="Checkout" EntitySet="Checkout" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Library_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_Book">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="publisher" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ISBN" Type="Int32" />
+          <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="genre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="condition" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="availability" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Checkouts" Relationship="Self.FK_Checkout_Books" FromRole="Books" ToRole="Checkout" />
+        </EntityType>
+        <EntityType Name="tb_Checkout">
+          <Key>
+            <PropertyRef Name="checkout_ID" />
+          </Key>
+          <Property Name="checkout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_ID" Type="Int32" Nullable="false" />
+          <Property Name="patron_ID" Type="Int32" Nullable="false" />
+          <Property Name="checkout_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="due_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Checkout_Books" FromRole="Checkout" ToRole="Books" />
+          <NavigationProperty Name="Patron" Relationship="Self.FK_Checkout_Patrons" FromRole="Checkout" ToRole="Patrons" />
+        </EntityType>
+        <EntityType Name="tb_Patron">
+          <Key>
+            <PropertyRef Name="patron_ID" />
+          </Key>
+          <Property Name="patron_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Checkouts" Relationship="Self.FK_Checkout_Patrons" FromRole="Patrons" ToRole="Checkout" />
+        </EntityType>
+        <EntityType Name="tb_UserInfo">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_level" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Checkout_Books">
+          <End Role="Books" Type="Library_ManagementModel.tb_Book" Multiplicity="1" />
+          <End Role="Checkout" Type="Library_ManagementModel.tb_Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="book_ID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Checkout_Patrons">
+          <End Role="Patrons" Type="Library_ManagementModel.tb_Patron" Multiplicity="1" />
+          <End Role="Checkout" Type="Library_ManagementModel.tb_Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrons">
+              <PropertyRef Name="patron_ID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="patron_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Library_ManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_Book" EntityType="Library_ManagementModel.tb_Book" />
+          <EntitySet Name="tb_Checkout" EntityType="Library_ManagementModel.tb_Checkout" />
+          <EntitySet Name="tb_Patron" EntityType="Library_ManagementModel.tb_Patron" />
+          <EntitySet Name="UserInfos" EntityType="Library_ManagementModel.tb_UserInfo" />
+          <AssociationSet Name="FK_Checkout_Books" Association="Self.FK_Checkout_Books">
+            <End Role="Books" EntitySet="tb_Book" />
+            <End Role="Checkout" EntitySet="tb_Checkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Checkout_Patrons" Association="Self.FK_Checkout_Patrons">
+            <End Role="Patrons" EntitySet="tb_Patron" />
+            <End Role="Checkout" EntitySet="tb_Checkout" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Library_ManagementModelStoreContainer" CdmEntityContainer="Library_ManagementEntities">
+          <EntitySetMapping Name="tb_Book">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="condition" ColumnName="condition" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Checkout">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Checkout">
+              <MappingFragment StoreEntitySet="Checkout">
+                <ScalarProperty Name="checkout_ID" ColumnName="checkout_ID" />
+                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+                <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
+                <ScalarProperty Name="checkout_Date" ColumnName="checkout_Date" />
+                <ScalarProperty Name="due_Date" ColumnName="due_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Patron">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Patron">
+              <MappingFragment StoreEntitySet="Patrons">
+                <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfos">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_UserInfo">
+              <MappingFragment StoreEntitySet="UserInfos">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="user_level" ColumnName="user_level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

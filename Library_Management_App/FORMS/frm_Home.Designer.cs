@@ -31,36 +31,37 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Home));
             this.pan_SideMenu = new System.Windows.Forms.Panel();
             this.pan_Navigation = new System.Windows.Forms.Panel();
+            this.btn_User = new System.Windows.Forms.Button();
+            this.btn_Chart = new System.Windows.Forms.Button();
             this.btn_Ticket = new System.Windows.Forms.Button();
             this.btn_Patron = new System.Windows.Forms.Button();
             this.btn_Book = new System.Windows.Forms.Button();
+            this.pic_Logo = new System.Windows.Forms.PictureBox();
             this.lbl_LogoName2 = new System.Windows.Forms.Label();
             this.lbl_LogoName1 = new System.Windows.Forms.Label();
             this.pan_MainScreen = new System.Windows.Forms.Panel();
-            this.pan_TotalBooks = new System.Windows.Forms.Panel();
-            this.lbl_TotalBooksTag = new System.Windows.Forms.Label();
-            this.lbl_TotalBooks = new System.Windows.Forms.Label();
-            this.pan_TotalPatrons = new System.Windows.Forms.Panel();
-            this.lbl_TotalPatrons = new System.Windows.Forms.Label();
-            this.lbl_TotalPatronsTag = new System.Windows.Forms.Label();
+            this.pan_PopularBooks = new System.Windows.Forms.Panel();
+            this.lbl_PopularBooksTag = new System.Windows.Forms.Label();
+            this.pan_LatestBooks = new System.Windows.Forms.Panel();
+            this.lbl_LatestBooksTag = new System.Windows.Forms.Label();
             this.pan_TotalTickets = new System.Windows.Forms.Panel();
             this.lbl_TotalTickets = new System.Windows.Forms.Label();
             this.lbl_TotalTicketsTag = new System.Windows.Forms.Label();
-            this.pan_LatestBooks = new System.Windows.Forms.Panel();
-            this.pan_PopularBooks = new System.Windows.Forms.Panel();
-            this.lbl_LatestBooksTag = new System.Windows.Forms.Label();
-            this.lbl_PopularBooksTag = new System.Windows.Forms.Label();
-            this.btn_Chart = new System.Windows.Forms.Button();
-            this.pic_Logo = new System.Windows.Forms.PictureBox();
+            this.pan_TotalPatrons = new System.Windows.Forms.Panel();
+            this.lbl_TotalPatrons = new System.Windows.Forms.Label();
+            this.lbl_TotalPatronsTag = new System.Windows.Forms.Label();
+            this.pan_TotalBooks = new System.Windows.Forms.Panel();
+            this.lbl_TotalBooks = new System.Windows.Forms.Label();
+            this.lbl_TotalBooksTag = new System.Windows.Forms.Label();
             this.pan_SideMenu.SuspendLayout();
             this.pan_Navigation.SuspendLayout();
-            this.pan_MainScreen.SuspendLayout();
-            this.pan_TotalBooks.SuspendLayout();
-            this.pan_TotalPatrons.SuspendLayout();
-            this.pan_TotalTickets.SuspendLayout();
-            this.pan_LatestBooks.SuspendLayout();
-            this.pan_PopularBooks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).BeginInit();
+            this.pan_MainScreen.SuspendLayout();
+            this.pan_PopularBooks.SuspendLayout();
+            this.pan_LatestBooks.SuspendLayout();
+            this.pan_TotalTickets.SuspendLayout();
+            this.pan_TotalPatrons.SuspendLayout();
+            this.pan_TotalBooks.SuspendLayout();
             this.SuspendLayout();
             // 
             // pan_SideMenu
@@ -77,11 +78,28 @@
             // 
             resources.ApplyResources(this.pan_Navigation, "pan_Navigation");
             this.pan_Navigation.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pan_Navigation.Controls.Add(this.btn_User);
             this.pan_Navigation.Controls.Add(this.btn_Chart);
             this.pan_Navigation.Controls.Add(this.btn_Ticket);
             this.pan_Navigation.Controls.Add(this.btn_Patron);
             this.pan_Navigation.Controls.Add(this.btn_Book);
             this.pan_Navigation.Name = "pan_Navigation";
+            // 
+            // btn_User
+            // 
+            this.btn_User.BackColor = System.Drawing.Color.SandyBrown;
+            resources.ApplyResources(this.btn_User, "btn_User");
+            this.btn_User.Name = "btn_User";
+            this.btn_User.UseVisualStyleBackColor = false;
+            this.btn_User.Click += new System.EventHandler(this.btn_User_Click);
+            // 
+            // btn_Chart
+            // 
+            this.btn_Chart.BackColor = System.Drawing.Color.SandyBrown;
+            resources.ApplyResources(this.btn_Chart, "btn_Chart");
+            this.btn_Chart.Name = "btn_Chart";
+            this.btn_Chart.UseVisualStyleBackColor = false;
+            this.btn_Chart.Click += new System.EventHandler(this.btn_Chart_Click);
             // 
             // btn_Ticket
             // 
@@ -97,6 +115,7 @@
             resources.ApplyResources(this.btn_Patron, "btn_Patron");
             this.btn_Patron.Name = "btn_Patron";
             this.btn_Patron.UseVisualStyleBackColor = false;
+            this.btn_Patron.Click += new System.EventHandler(this.btn_Patron_Click);
             // 
             // btn_Book
             // 
@@ -105,6 +124,12 @@
             this.btn_Book.Name = "btn_Book";
             this.btn_Book.UseVisualStyleBackColor = false;
             this.btn_Book.Click += new System.EventHandler(this.btn_Book_Click);
+            // 
+            // pic_Logo
+            // 
+            resources.ApplyResources(this.pic_Logo, "pic_Logo");
+            this.pic_Logo.Name = "pic_Logo";
+            this.pic_Logo.TabStop = false;
             // 
             // lbl_LogoName2
             // 
@@ -127,45 +152,31 @@
             resources.ApplyResources(this.pan_MainScreen, "pan_MainScreen");
             this.pan_MainScreen.Name = "pan_MainScreen";
             // 
-            // pan_TotalBooks
+            // pan_PopularBooks
             // 
-            this.pan_TotalBooks.BackColor = System.Drawing.Color.Khaki;
-            this.pan_TotalBooks.Controls.Add(this.lbl_TotalBooks);
-            this.pan_TotalBooks.Controls.Add(this.lbl_TotalBooksTag);
-            resources.ApplyResources(this.pan_TotalBooks, "pan_TotalBooks");
-            this.pan_TotalBooks.Name = "pan_TotalBooks";
+            this.pan_PopularBooks.BackColor = System.Drawing.Color.LightGreen;
+            this.pan_PopularBooks.Controls.Add(this.lbl_PopularBooksTag);
+            resources.ApplyResources(this.pan_PopularBooks, "pan_PopularBooks");
+            this.pan_PopularBooks.Name = "pan_PopularBooks";
             // 
-            // lbl_TotalBooksTag
+            // lbl_PopularBooksTag
             // 
-            resources.ApplyResources(this.lbl_TotalBooksTag, "lbl_TotalBooksTag");
-            this.lbl_TotalBooksTag.BackColor = System.Drawing.Color.DarkKhaki;
-            this.lbl_TotalBooksTag.Name = "lbl_TotalBooksTag";
+            resources.ApplyResources(this.lbl_PopularBooksTag, "lbl_PopularBooksTag");
+            this.lbl_PopularBooksTag.BackColor = System.Drawing.Color.LimeGreen;
+            this.lbl_PopularBooksTag.Name = "lbl_PopularBooksTag";
             // 
-            // lbl_TotalBooks
+            // pan_LatestBooks
             // 
-            resources.ApplyResources(this.lbl_TotalBooks, "lbl_TotalBooks");
-            this.lbl_TotalBooks.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_TotalBooks.Name = "lbl_TotalBooks";
+            this.pan_LatestBooks.BackColor = System.Drawing.Color.LightGreen;
+            this.pan_LatestBooks.Controls.Add(this.lbl_LatestBooksTag);
+            resources.ApplyResources(this.pan_LatestBooks, "pan_LatestBooks");
+            this.pan_LatestBooks.Name = "pan_LatestBooks";
             // 
-            // pan_TotalPatrons
+            // lbl_LatestBooksTag
             // 
-            this.pan_TotalPatrons.BackColor = System.Drawing.Color.LightCoral;
-            this.pan_TotalPatrons.Controls.Add(this.lbl_TotalPatrons);
-            this.pan_TotalPatrons.Controls.Add(this.lbl_TotalPatronsTag);
-            resources.ApplyResources(this.pan_TotalPatrons, "pan_TotalPatrons");
-            this.pan_TotalPatrons.Name = "pan_TotalPatrons";
-            // 
-            // lbl_TotalPatrons
-            // 
-            resources.ApplyResources(this.lbl_TotalPatrons, "lbl_TotalPatrons");
-            this.lbl_TotalPatrons.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_TotalPatrons.Name = "lbl_TotalPatrons";
-            // 
-            // lbl_TotalPatronsTag
-            // 
-            resources.ApplyResources(this.lbl_TotalPatronsTag, "lbl_TotalPatronsTag");
-            this.lbl_TotalPatronsTag.BackColor = System.Drawing.Color.IndianRed;
-            this.lbl_TotalPatronsTag.Name = "lbl_TotalPatronsTag";
+            resources.ApplyResources(this.lbl_LatestBooksTag, "lbl_LatestBooksTag");
+            this.lbl_LatestBooksTag.BackColor = System.Drawing.Color.LimeGreen;
+            this.lbl_LatestBooksTag.Name = "lbl_LatestBooksTag";
             // 
             // pan_TotalTickets
             // 
@@ -187,44 +198,45 @@
             this.lbl_TotalTicketsTag.BackColor = System.Drawing.Color.SteelBlue;
             this.lbl_TotalTicketsTag.Name = "lbl_TotalTicketsTag";
             // 
-            // pan_LatestBooks
+            // pan_TotalPatrons
             // 
-            this.pan_LatestBooks.BackColor = System.Drawing.Color.LightGreen;
-            this.pan_LatestBooks.Controls.Add(this.lbl_LatestBooksTag);
-            resources.ApplyResources(this.pan_LatestBooks, "pan_LatestBooks");
-            this.pan_LatestBooks.Name = "pan_LatestBooks";
+            this.pan_TotalPatrons.BackColor = System.Drawing.Color.LightCoral;
+            this.pan_TotalPatrons.Controls.Add(this.lbl_TotalPatrons);
+            this.pan_TotalPatrons.Controls.Add(this.lbl_TotalPatronsTag);
+            resources.ApplyResources(this.pan_TotalPatrons, "pan_TotalPatrons");
+            this.pan_TotalPatrons.Name = "pan_TotalPatrons";
             // 
-            // pan_PopularBooks
+            // lbl_TotalPatrons
             // 
-            this.pan_PopularBooks.BackColor = System.Drawing.Color.LightGreen;
-            this.pan_PopularBooks.Controls.Add(this.lbl_PopularBooksTag);
-            resources.ApplyResources(this.pan_PopularBooks, "pan_PopularBooks");
-            this.pan_PopularBooks.Name = "pan_PopularBooks";
+            resources.ApplyResources(this.lbl_TotalPatrons, "lbl_TotalPatrons");
+            this.lbl_TotalPatrons.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_TotalPatrons.Name = "lbl_TotalPatrons";
             // 
-            // lbl_LatestBooksTag
+            // lbl_TotalPatronsTag
             // 
-            resources.ApplyResources(this.lbl_LatestBooksTag, "lbl_LatestBooksTag");
-            this.lbl_LatestBooksTag.BackColor = System.Drawing.Color.LimeGreen;
-            this.lbl_LatestBooksTag.Name = "lbl_LatestBooksTag";
+            resources.ApplyResources(this.lbl_TotalPatronsTag, "lbl_TotalPatronsTag");
+            this.lbl_TotalPatronsTag.BackColor = System.Drawing.Color.IndianRed;
+            this.lbl_TotalPatronsTag.Name = "lbl_TotalPatronsTag";
             // 
-            // lbl_PopularBooksTag
+            // pan_TotalBooks
             // 
-            resources.ApplyResources(this.lbl_PopularBooksTag, "lbl_PopularBooksTag");
-            this.lbl_PopularBooksTag.BackColor = System.Drawing.Color.LimeGreen;
-            this.lbl_PopularBooksTag.Name = "lbl_PopularBooksTag";
+            this.pan_TotalBooks.BackColor = System.Drawing.Color.Khaki;
+            this.pan_TotalBooks.Controls.Add(this.lbl_TotalBooks);
+            this.pan_TotalBooks.Controls.Add(this.lbl_TotalBooksTag);
+            resources.ApplyResources(this.pan_TotalBooks, "pan_TotalBooks");
+            this.pan_TotalBooks.Name = "pan_TotalBooks";
             // 
-            // btn_Chart
+            // lbl_TotalBooks
             // 
-            this.btn_Chart.BackColor = System.Drawing.Color.SandyBrown;
-            resources.ApplyResources(this.btn_Chart, "btn_Chart");
-            this.btn_Chart.Name = "btn_Chart";
-            this.btn_Chart.UseVisualStyleBackColor = false;
+            resources.ApplyResources(this.lbl_TotalBooks, "lbl_TotalBooks");
+            this.lbl_TotalBooks.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_TotalBooks.Name = "lbl_TotalBooks";
             // 
-            // pic_Logo
+            // lbl_TotalBooksTag
             // 
-            resources.ApplyResources(this.pic_Logo, "pic_Logo");
-            this.pic_Logo.Name = "pic_Logo";
-            this.pic_Logo.TabStop = false;
+            resources.ApplyResources(this.lbl_TotalBooksTag, "lbl_TotalBooksTag");
+            this.lbl_TotalBooksTag.BackColor = System.Drawing.Color.DarkKhaki;
+            this.lbl_TotalBooksTag.Name = "lbl_TotalBooksTag";
             // 
             // frm_Home
             // 
@@ -235,23 +247,24 @@
             this.Controls.Add(this.pan_SideMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frm_Home";
+            this.Activated += new System.EventHandler(this.frm_Home_Activated);
             this.Load += new System.EventHandler(this.frm_Home_Load);
             this.Shown += new System.EventHandler(this.frm_Home_Shown);
             this.pan_SideMenu.ResumeLayout(false);
             this.pan_SideMenu.PerformLayout();
             this.pan_Navigation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
             this.pan_MainScreen.ResumeLayout(false);
-            this.pan_TotalBooks.ResumeLayout(false);
-            this.pan_TotalBooks.PerformLayout();
-            this.pan_TotalPatrons.ResumeLayout(false);
-            this.pan_TotalPatrons.PerformLayout();
-            this.pan_TotalTickets.ResumeLayout(false);
-            this.pan_TotalTickets.PerformLayout();
-            this.pan_LatestBooks.ResumeLayout(false);
-            this.pan_LatestBooks.PerformLayout();
             this.pan_PopularBooks.ResumeLayout(false);
             this.pan_PopularBooks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Logo)).EndInit();
+            this.pan_LatestBooks.ResumeLayout(false);
+            this.pan_LatestBooks.PerformLayout();
+            this.pan_TotalTickets.ResumeLayout(false);
+            this.pan_TotalTickets.PerformLayout();
+            this.pan_TotalPatrons.ResumeLayout(false);
+            this.pan_TotalPatrons.PerformLayout();
+            this.pan_TotalBooks.ResumeLayout(false);
+            this.pan_TotalBooks.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -281,5 +294,6 @@
         private System.Windows.Forms.Label lbl_LatestBooksTag;
         private System.Windows.Forms.Label lbl_PopularBooksTag;
         private System.Windows.Forms.Button btn_Chart;
+        private System.Windows.Forms.Button btn_User;
     }
 }
