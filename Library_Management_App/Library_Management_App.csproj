@@ -72,6 +72,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppDatabase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DATABASE\Models\BookInfo.cs" />
+    <Compile Include="DATABASE\Models\CheckoutInfo.cs" />
+    <Compile Include="DATABASE\Models\PatronInfo.cs" />
     <Compile Include="DATABASE\Models\UserInfo.cs" />
     <Compile Include="DATABASE\tb_Book.cs">
       <DependentUpon>AppDatabase.tt</DependentUpon>
@@ -90,6 +93,12 @@
     </Compile>
     <Compile Include="FORMS\frm_Books.Designer.cs">
       <DependentUpon>frm_Books.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frm_Checkout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frm_Checkout.Designer.cs">
+      <DependentUpon>frm_Checkout.cs</DependentUpon>
     </Compile>
     <Compile Include="FORMS\frm_Home.cs">
       <SubType>Form</SubType>
@@ -113,6 +122,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FORMS\frm_Books.resx">
       <DependentUpon>frm_Books.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frm_Checkout.resx">
+      <DependentUpon>frm_Checkout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frm_Home.resx">
       <DependentUpon>frm_Home.cs</DependentUpon>

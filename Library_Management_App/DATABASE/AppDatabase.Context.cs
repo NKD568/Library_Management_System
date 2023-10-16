@@ -25,9 +25,9 @@ namespace Library_Management_App.DATABASE
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tb_Book> tb_Book { get; set; }
-        public virtual DbSet<tb_Checkout> tb_Checkout { get; set; }
-        public virtual DbSet<tb_Patron> tb_Patron { get; set; }
         public virtual DbSet<tb_UserInfo> UserInfos { get; set; }
+        public virtual DbSet<tb_Book> Books { get; set; }
+        public virtual DbSet<tb_Checkout> Checkout { get; set; }
+        public virtual DbSet<tb_Patron> Patrons { get; set; }
     }
 }

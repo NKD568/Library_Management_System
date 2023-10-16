@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Library_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Library_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="book_ID" />
@@ -12,12 +12,7 @@
           <Property Name="book_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="author" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="publisher" Type="nchar" MaxLength="20" />
-          <Property Name="ISBN" Type="int" />
-          <Property Name="releaseDate" Type="date" Nullable="false" />
-          <Property Name="genre" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="condition" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="availability" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="availability" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Checkout">
           <Key>
@@ -86,48 +81,10 @@
             <End Role="Checkout" EntitySet="Checkout" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Library_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tb_Book">
-          <Key>
-            <PropertyRef Name="book_ID" />
-          </Key>
-          <Property Name="book_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="publisher" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="ISBN" Type="Int32" />
-          <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="genre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="condition" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="availability" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Checkouts" Relationship="Self.FK_Checkout_Books" FromRole="Books" ToRole="Checkout" />
-        </EntityType>
-        <EntityType Name="tb_Checkout">
-          <Key>
-            <PropertyRef Name="checkout_ID" />
-          </Key>
-          <Property Name="checkout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="book_ID" Type="Int32" Nullable="false" />
-          <Property Name="patron_ID" Type="Int32" Nullable="false" />
-          <Property Name="checkout_Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="due_Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_Checkout_Books" FromRole="Checkout" ToRole="Books" />
-          <NavigationProperty Name="Patron" Relationship="Self.FK_Checkout_Patrons" FromRole="Checkout" ToRole="Patrons" />
-        </EntityType>
-        <EntityType Name="tb_Patron">
-          <Key>
-            <PropertyRef Name="patron_ID" />
-          </Key>
-          <Property Name="patron_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="phone" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Checkouts" Relationship="Self.FK_Checkout_Patrons" FromRole="Patrons" ToRole="Checkout" />
-        </EntityType>
         <EntityType Name="tb_UserInfo">
           <Key>
             <PropertyRef Name="user_ID" />
@@ -138,11 +95,57 @@
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_level" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityContainer Name="Library_ManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserInfos" EntityType="Library_ManagementModel.tb_UserInfo" />
+          <EntitySet Name="Books" EntityType="Library_ManagementModel.tb_Book" />
+          <EntitySet Name="Checkout" EntityType="Library_ManagementModel.tb_Checkout" />
+          <EntitySet Name="Patrons" EntityType="Library_ManagementModel.tb_Patron" />
+          <AssociationSet Name="FK_Checkout_Books" Association="Library_ManagementModel.FK_Checkout_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Checkout" EntitySet="Checkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Checkout_Patrons" Association="Library_ManagementModel.FK_Checkout_Patrons">
+            <End Role="Patron" EntitySet="Patrons" />
+            <End Role="Checkout" EntitySet="Checkout" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tb_Book">
+          <Key>
+            <PropertyRef Name="book_ID" />
+          </Key>
+          <Property Name="book_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="availability" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Checkouts" Relationship="Library_ManagementModel.FK_Checkout_Books" FromRole="Book" ToRole="Checkout" />
+        </EntityType>
+        <EntityType Name="tb_Checkout">
+          <Key>
+            <PropertyRef Name="checkout_ID" />
+          </Key>
+          <Property Name="checkout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_ID" Type="Int32" Nullable="false" />
+          <Property Name="patron_ID" Type="Int32" Nullable="false" />
+          <Property Name="checkout_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="due_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Book" Relationship="Library_ManagementModel.FK_Checkout_Books" FromRole="Checkout" ToRole="Book" />
+          <NavigationProperty Name="Patron" Relationship="Library_ManagementModel.FK_Checkout_Patrons" FromRole="Checkout" ToRole="Patron" />
+        </EntityType>
+        <EntityType Name="tb_Patron">
+          <Key>
+            <PropertyRef Name="patron_ID" />
+          </Key>
+          <Property Name="patron_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Checkouts" Relationship="Library_ManagementModel.FK_Checkout_Patrons" FromRole="Patron" ToRole="Checkout" />
+        </EntityType>
         <Association Name="FK_Checkout_Books">
-          <End Role="Books" Type="Library_ManagementModel.tb_Book" Multiplicity="1" />
-          <End Role="Checkout" Type="Library_ManagementModel.tb_Checkout" Multiplicity="*" />
+          <End Type="Library_ManagementModel.tb_Book" Role="Book" Multiplicity="1" />
+          <End Type="Library_ManagementModel.tb_Checkout" Role="Checkout" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Books">
+            <Principal Role="Book">
               <PropertyRef Name="book_ID" />
             </Principal>
             <Dependent Role="Checkout">
@@ -151,10 +154,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Checkout_Patrons">
-          <End Role="Patrons" Type="Library_ManagementModel.tb_Patron" Multiplicity="1" />
-          <End Role="Checkout" Type="Library_ManagementModel.tb_Checkout" Multiplicity="*" />
+          <End Type="Library_ManagementModel.tb_Patron" Role="Patron" Multiplicity="1" />
+          <End Type="Library_ManagementModel.tb_Checkout" Role="Checkout" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Patrons">
+            <Principal Role="Patron">
               <PropertyRef Name="patron_ID" />
             </Principal>
             <Dependent Role="Checkout">
@@ -162,62 +165,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Library_ManagementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tb_Book" EntityType="Library_ManagementModel.tb_Book" />
-          <EntitySet Name="tb_Checkout" EntityType="Library_ManagementModel.tb_Checkout" />
-          <EntitySet Name="tb_Patron" EntityType="Library_ManagementModel.tb_Patron" />
-          <EntitySet Name="UserInfos" EntityType="Library_ManagementModel.tb_UserInfo" />
-          <AssociationSet Name="FK_Checkout_Books" Association="Self.FK_Checkout_Books">
-            <End Role="Books" EntitySet="tb_Book" />
-            <End Role="Checkout" EntitySet="tb_Checkout" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Checkout_Patrons" Association="Self.FK_Checkout_Patrons">
-            <End Role="Patrons" EntitySet="tb_Patron" />
-            <End Role="Checkout" EntitySet="tb_Checkout" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Library_ManagementModelStoreContainer" CdmEntityContainer="Library_ManagementEntities">
-          <EntitySetMapping Name="tb_Book">
-            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Book">
-              <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="author" ColumnName="author" />
-                <ScalarProperty Name="publisher" ColumnName="publisher" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
-                <ScalarProperty Name="genre" ColumnName="genre" />
-                <ScalarProperty Name="condition" ColumnName="condition" />
-                <ScalarProperty Name="availability" ColumnName="availability" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_Checkout">
-            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Checkout">
-              <MappingFragment StoreEntitySet="Checkout">
-                <ScalarProperty Name="checkout_ID" ColumnName="checkout_ID" />
-                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
-                <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
-                <ScalarProperty Name="checkout_Date" ColumnName="checkout_Date" />
-                <ScalarProperty Name="due_Date" ColumnName="due_Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_Patron">
-            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Patron">
-              <MappingFragment StoreEntitySet="Patrons">
-                <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserInfos">
             <EntityTypeMapping TypeName="Library_ManagementModel.tb_UserInfo">
               <MappingFragment StoreEntitySet="UserInfos">
@@ -226,6 +179,37 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="user_level" ColumnName="user_level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checkout">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Checkout">
+              <MappingFragment StoreEntitySet="Checkout">
+                <ScalarProperty Name="due_Date" ColumnName="due_Date" />
+                <ScalarProperty Name="checkout_Date" ColumnName="checkout_Date" />
+                <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
+                <ScalarProperty Name="book_ID" ColumnName="book_ID" />
+                <ScalarProperty Name="checkout_ID" ColumnName="checkout_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrons">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_Patron">
+              <MappingFragment StoreEntitySet="Patrons">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

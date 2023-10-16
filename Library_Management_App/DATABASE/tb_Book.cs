@@ -23,12 +23,7 @@ namespace Library_Management_App.DATABASE
         public int book_ID { get; set; }
         public string title { get; set; }
         public string author { get; set; }
-        public string publisher { get; set; }
-        public Nullable<int> ISBN { get; set; }
-        public System.DateTime releaseDate { get; set; }
-        public string genre { get; set; }
-        public string condition { get; set; }
-        public string availability { get; set; }
+        public bool availability { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Checkout> Checkouts { get; set; }

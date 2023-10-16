@@ -191,7 +191,6 @@ namespace Library_Management_App.FORMS
                         }
                 }
             }
-  
         }
         private void cmb_AttributesFind_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -308,6 +307,7 @@ namespace Library_Management_App.FORMS
             try
             {
                 tb_UserInfo user = new tb_UserInfo();
+                user.user_ID = int.Parse(lbl_IdUser.Text);
                 user.username = txt_NameUser.Text;
                 user.email = txt_EmailUser.Text;
                 user.user_level = cmb_LevelUser.SelectedIndex;

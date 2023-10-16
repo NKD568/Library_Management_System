@@ -31,8 +31,8 @@ namespace Library_Management_App.FORMS
         }
         private void frm_Home_Shown(object sender, EventArgs e)
         {
-            frm_Login login = new frm_Login();
-            login.ShowDialog();
+            //frm_Login login = new frm_Login();
+            //login.ShowDialog();
         }
         private void frm_Home_Activated(object sender, EventArgs e)
         {
@@ -44,9 +44,8 @@ namespace Library_Management_App.FORMS
 
         private void btn_Book_Click(object sender, EventArgs e)
         {
-            frm_Books formBook = new frm_Books();
-
-            formBook.ShowDialog();
+            frm_Books Book = new frm_Books();
+            Book.ShowDialog();
         }
         private void btn_Patron_Click(object sender, EventArgs e)
         {
@@ -54,7 +53,8 @@ namespace Library_Management_App.FORMS
         }
         private void btn_Ticket_Click(object sender, EventArgs e)
         {
-
+            frm_Checkout Checkout = new frm_Checkout();
+            Checkout.ShowDialog();
         }
         private void btn_Chart_Click(object sender, EventArgs e)
         {
