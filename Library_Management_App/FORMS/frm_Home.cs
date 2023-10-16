@@ -32,7 +32,7 @@ namespace Library_Management_App.FORMS
         private void frm_Home_Shown(object sender, EventArgs e)
         {
             frm_Login login = new frm_Login();
-            //login.ShowDialog();
+            login.ShowDialog();
         }
         private void frm_Home_Activated(object sender, EventArgs e)
         {

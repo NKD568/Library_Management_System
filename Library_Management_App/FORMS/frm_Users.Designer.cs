@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabP_Modify = new System.Windows.Forms.TabPage();
+            this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_ConfirmChange = new System.Windows.Forms.Button();
             this.lbl_IdUser = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,15 +46,14 @@
             this.lbl_UserPassword = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_IdUserTag = new System.Windows.Forms.Label();
             this.txt_UserPassword = new System.Windows.Forms.TextBox();
             this.txt_EmailUser = new System.Windows.Forms.TextBox();
             this.txt_NameUser = new System.Windows.Forms.TextBox();
+            this.cmb_LevelUser = new System.Windows.Forms.ComboBox();
             this.cmb_ModifyType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dgv_UserModify = new System.Windows.Forms.DataGridView();
-            this.cmb_LevelUser = new System.Windows.Forms.ComboBox();
-            this.btn_Clear = new System.Windows.Forms.Button();
             this.tcrl_UserTabView.SuspendLayout();
             this.tabP_General.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_UserView)).BeginInit();
@@ -177,7 +177,7 @@
             this.tabP_Modify.Controls.Add(this.lbl_UserPassword);
             this.tabP_Modify.Controls.Add(this.label6);
             this.tabP_Modify.Controls.Add(this.label9);
-            this.tabP_Modify.Controls.Add(this.label5);
+            this.tabP_Modify.Controls.Add(this.lbl_IdUserTag);
             this.tabP_Modify.Controls.Add(this.txt_UserPassword);
             this.tabP_Modify.Controls.Add(this.txt_EmailUser);
             this.tabP_Modify.Controls.Add(this.txt_NameUser);
@@ -192,6 +192,18 @@
             this.tabP_Modify.TabIndex = 1;
             this.tabP_Modify.Text = "          Tuỳ Chỉnh          ";
             // 
+            // btn_Clear
+            // 
+            this.btn_Clear.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.btn_Clear.Location = new System.Drawing.Point(919, 153);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(167, 55);
+            this.btn_Clear.TabIndex = 5;
+            this.btn_Clear.Text = "LÀM MỚI";
+            this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.Visible = false;
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
+            // 
             // btn_ConfirmChange
             // 
             this.btn_ConfirmChange.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
@@ -201,6 +213,7 @@
             this.btn_ConfirmChange.TabIndex = 5;
             this.btn_ConfirmChange.Text = "XÁC NHẬN";
             this.btn_ConfirmChange.UseVisualStyleBackColor = true;
+            this.btn_ConfirmChange.Visible = false;
             this.btn_ConfirmChange.Click += new System.EventHandler(this.btn_ConfirmChange_Click);
             // 
             // lbl_IdUser
@@ -210,6 +223,7 @@
             this.lbl_IdUser.Name = "lbl_IdUser";
             this.lbl_IdUser.Size = new System.Drawing.Size(0, 48);
             this.lbl_IdUser.TabIndex = 5;
+            this.lbl_IdUser.Visible = false;
             // 
             // label8
             // 
@@ -257,14 +271,14 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "Chế độ:";
             // 
-            // label5
+            // lbl_IdUserTag
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 48);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "ID:";
+            this.lbl_IdUserTag.AutoSize = true;
+            this.lbl_IdUserTag.Location = new System.Drawing.Point(0, 75);
+            this.lbl_IdUserTag.Name = "lbl_IdUserTag";
+            this.lbl_IdUserTag.Size = new System.Drawing.Size(63, 48);
+            this.lbl_IdUserTag.TabIndex = 5;
+            this.lbl_IdUserTag.Text = "ID:";
             // 
             // txt_UserPassword
             // 
@@ -282,6 +296,7 @@
             this.txt_EmailUser.Name = "txt_EmailUser";
             this.txt_EmailUser.Size = new System.Drawing.Size(379, 55);
             this.txt_EmailUser.TabIndex = 2;
+            this.txt_EmailUser.Visible = false;
             // 
             // txt_NameUser
             // 
@@ -289,7 +304,19 @@
             this.txt_NameUser.Name = "txt_NameUser";
             this.txt_NameUser.Size = new System.Drawing.Size(288, 55);
             this.txt_NameUser.TabIndex = 1;
+            this.txt_NameUser.Visible = false;
             this.txt_NameUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_NameUser_KeyPress);
+            // 
+            // cmb_LevelUser
+            // 
+            this.cmb_LevelUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_LevelUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.cmb_LevelUser.FormattingEnabled = true;
+            this.cmb_LevelUser.Location = new System.Drawing.Point(95, 162);
+            this.cmb_LevelUser.Name = "cmb_LevelUser";
+            this.cmb_LevelUser.Size = new System.Drawing.Size(135, 46);
+            this.cmb_LevelUser.TabIndex = 3;
+            this.cmb_LevelUser.Visible = false;
             // 
             // cmb_ModifyType
             // 
@@ -327,28 +354,6 @@
             this.dgv_UserModify.Size = new System.Drawing.Size(1084, 319);
             this.dgv_UserModify.TabIndex = 1;
             this.dgv_UserModify.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_UserModify_CellClick);
-            // 
-            // cmb_LevelUser
-            // 
-            this.cmb_LevelUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_LevelUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.cmb_LevelUser.FormattingEnabled = true;
-            this.cmb_LevelUser.Location = new System.Drawing.Point(95, 162);
-            this.cmb_LevelUser.Name = "cmb_LevelUser";
-            this.cmb_LevelUser.Size = new System.Drawing.Size(135, 46);
-            this.cmb_LevelUser.TabIndex = 3;
-            this.cmb_LevelUser.SelectedIndexChanged += new System.EventHandler(this.cmb_ModifyType_SelectedIndexChanged);
-            // 
-            // btn_Clear
-            // 
-            this.btn_Clear.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btn_Clear.Location = new System.Drawing.Point(919, 153);
-            this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(167, 55);
-            this.btn_Clear.TabIndex = 5;
-            this.btn_Clear.Text = "LÀM MỚI";
-            this.btn_Clear.UseVisualStyleBackColor = true;
-            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // frm_Users
             // 
@@ -390,7 +395,7 @@
         private System.Windows.Forms.Label lbl_IdUser;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_IdUserTag;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbl_UserPassword;
         private System.Windows.Forms.TextBox txt_UserPassword;

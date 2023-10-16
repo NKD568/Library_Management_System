@@ -29,6 +29,7 @@ namespace Library_Management_App.FORMS
             this.CenterToScreen();
 
             instantiateControls();
+            clearFields();
             info.showAllUsers(dgv_UserModify);
         }
 
@@ -230,17 +231,24 @@ namespace Library_Management_App.FORMS
         // TABPAGE MODIFY 
         private void cmb_ModifyType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmb_ModifyType.SelectedIndex == 0)
-            {             
+            if (cmb_ModifyType.SelectedIndex == 0)
+            {
+                clearFields();
                 lbl_IdUser.Text = (info.getLatestId() + 1).ToString();
+                setVisibleControls(true);
                 lbl_UserPassword.Visible = true;
                 txt_UserPassword.Visible = true;
                 dgv_UserModify.Enabled = false;
             }
+            else if (cmb_ModifyType.SelectedIndex == - 1)
+            {
+                setVisibleControls(false);
+            }
             else
             {
+                clearFields();
+                setVisibleControls(true);
                 dgv_UserModify.Enabled = true;
-                lbl_IdUser.Text = "";
                 lbl_UserPassword.Visible = false;
                 txt_UserPassword.Visible = false;
             }
@@ -288,6 +296,7 @@ namespace Library_Management_App.FORMS
             {
                 MessageBox.Show("Thêm thành công! ...", "Insert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFields();
+                info.showAllUsers(dgv_UserModify);
             }
             else
             {
@@ -309,6 +318,7 @@ namespace Library_Management_App.FORMS
                 {
                     MessageBox.Show("Sửa thành công! ...", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFields();
+                    info.showAllUsers(dgv_UserModify);
                 }
                 else
                 {
@@ -331,6 +341,7 @@ namespace Library_Management_App.FORMS
                 {
                     MessageBox.Show("Xoá thành công! ...", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFields();
+                    info.showAllUsers(dgv_UserModify);
                 }
                 else
                 {
@@ -375,6 +386,11 @@ namespace Library_Management_App.FORMS
                         deleteUser();
                         break;
                     }
+                default: // Mode: Unchosen
+                    {
+                        MessageBox.Show("Hãy chọn chế độ!");
+                        break;
+                    }
             }
         }
         private void btn_Clear_Click(object sender, EventArgs e)
@@ -389,11 +405,20 @@ namespace Library_Management_App.FORMS
             txt_UserPassword.Text = "";
             lbl_IdUser.Text = "";
         }
+        private void setVisibleControls(bool mode)
+        {
+            lbl_IdUser.Visible = mode;
+            txt_NameUser.Visible = mode;
+            txt_EmailUser.Visible = mode;
+            cmb_LevelUser.Visible = mode;
+            lbl_UserPassword.Visible = mode;
+            txt_UserPassword.Visible = mode;
+            btn_Clear.Visible = mode;
+            btn_ConfirmChange.Visible = mode;
+        }       
         private bool validateEmailAddress(string emailAddress)
         {
             return Regex.IsMatch(emailAddress, @"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
         }
-
-
     }
 }
