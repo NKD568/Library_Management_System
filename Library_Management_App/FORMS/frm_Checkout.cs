@@ -151,8 +151,8 @@ namespace Library_Management_App.FORMS
                         }
                         break;
                     case 4:
-                        if (txt_InputFind.TextLength >= 1 && !char.IsControl(e.KeyChar) ||
-                            !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                        if ((txt_InputFind.TextLength >= 1 && !char.IsControl(e.KeyChar)) ||
+                            (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)))
                         {
                             e.Handled = true;
                             return;
@@ -372,14 +372,15 @@ namespace Library_Management_App.FORMS
                  case 4: // Item: Avaibility
                     {
                         int num = int.Parse(txt_InputFind.Text);
-                        if(num != 1 || num != 0)
+                        if (num != 1 && num != 0)
                         {
-                            MessageBox.Show("Chỉ nhập 0 và 1.\n 0 là Đã mượn, 1 là Chưa mượn");
+                            MessageBox.Show("Chỉ nhập 0 và 1.\n 0 là Đã mượn, 1 là Chưa mượn" + num);
                             return;
                         }
+                        bool bol = num == 0 ? false : true;
                         numData = 0;
                         strData = "";
-                        bolData = Boolean.Parse(txt_InputFind.Text);
+                        bolData = bol;
                         findInfoByAttribute(numData, strData, bolData, 3, infoType);
                         break;
                     }
