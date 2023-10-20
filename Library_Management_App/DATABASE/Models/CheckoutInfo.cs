@@ -57,6 +57,7 @@ namespace Library_Management_App.DATABASE.Models
 
                 _entity.Checkout.Add(ticket);
 
+
                 // Update Book Avaibility
                 tb_Book _book = _entity.Books.Where(x => x.book_ID == ticket.book_ID).Select(x => x).FirstOrDefault();
                 _book.availability = false;
@@ -69,12 +70,29 @@ namespace Library_Management_App.DATABASE.Models
         public bool updateTicket(tb_Checkout ticket)
         {
             bool result = false;
+            int preBookID;
+
             using (Library_ManagementEntities _entity = new Library_ManagementEntities())
             {
                 tb_Checkout _ticket = _entity.Checkout.Where(x => x.checkout_ID == ticket.checkout_ID).Select(x => x).FirstOrDefault();
+                 preBookID = _ticket.book_ID;
                 _ticket.book_ID = ticket.book_ID;
                 _ticket.patron_ID = ticket.patron_ID;
                 _ticket.due_Date = ticket.due_Date;
+
+                // Update Book Avaibility IF change to new book
+                if(_ticket.book_ID != preBookID)
+                {
+                    // Update Old Book
+                    tb_Book _book = _entity.Books.Where(x => x.book_ID == preBookID).Select(x => x).FirstOrDefault();
+                    _book.availability = true;
+
+                    // Update New Book
+                    _book = _entity.Books.Where(x => x.book_ID == ticket.book_ID).Select(x => x).FirstOrDefault();
+                    _book.availability = false;
+                }
+
+
                 _entity.SaveChanges();
                 result = true;
             }

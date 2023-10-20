@@ -14,7 +14,7 @@ namespace Library_Management_App.FORMS
     public partial class frm_Login : Form
     {
 
-        frm_Home Home;
+        public static bool isLoginedIn = false;
         // USER TYPE
         public static UserType currentUserType;
         public static int currentUserId;
@@ -30,12 +30,6 @@ namespace Library_Management_App.FORMS
         {
             InitializeComponent();      
         }
-        public frm_Login(frm_Home Home)
-        {
-            InitializeComponent();
-            this.Home = Home;
-        }
-
 
         private void frm_Login_Load(object sender, EventArgs e)
         {
@@ -81,7 +75,7 @@ namespace Library_Management_App.FORMS
             }
             else
             {
-                MessageBox.Show("Thông tin không chính xác./n Vui lòng kiểm tra lại!");
+                MessageBox.Show("Thông tin không chính xác. Vui lòng kiểm tra lại!");
                 return;
             }
         }
@@ -96,6 +90,7 @@ namespace Library_Management_App.FORMS
                 {                   
                     frm_Login.currentUserType = user.user_level == 0 ? UserType.Admin : UserType.Staff;
                     frm_Login.currentUserId = user.user_ID;
+                    isLoginedIn = true;
                     result = true;
                 }
             }

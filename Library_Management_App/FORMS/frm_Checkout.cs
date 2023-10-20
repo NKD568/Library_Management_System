@@ -39,7 +39,14 @@ namespace Library_Management_App.FORMS
             addItemsInfoTypeComboBox("book");
 
             // Modify TabPage
-            lbl_Id.Text = (info.getLatestId() + 1).ToString();
+            if (dgv_TicketModify.Rows.Count != 0)
+            {
+                lbl_Id.Text = (info.getLatestId() + 1).ToString();
+            }
+            else
+            {
+                lbl_Id.Text = "0";
+            }
             cmb_ModifyType.Items.Add("Thêm");
             cmb_ModifyType.Items.Add("Sửa");
             cmb_ModifyType.Items.Add("Xoá");
@@ -47,21 +54,8 @@ namespace Library_Management_App.FORMS
             dgv_TicketModify.DataSource = null;
             info.showAllTickets(dgv_TicketModify);
             cmb_ModifyType.SelectedIndex = 0;
-            List<int> lstB = new List<int>();
-            List<int> lstP = new List<int>();
-            using (Library_ManagementEntities _entity = new Library_ManagementEntities())
-            {
-                lstP = _entity.Patrons.Select(s => s.patron_ID).ToList();
-                lstB = _entity.Books.Where(s => s.availability == true).Select(s => s.book_ID).ToList();
-            }
-            foreach (int id in lstP)
-            {
-                cmb_PatronIDs.Items.Add(id);
-            }
-            foreach (int id in lstB)
-            {
-                cmb_BookIDs.Items.Add(id);
-            }
+            refreshBookID();
+            refreshPatronID();
 
         }
 
@@ -75,7 +69,7 @@ namespace Library_Management_App.FORMS
                 cmb_AttributesFind.Items.Add("ID");
                 cmb_AttributesFind.Items.Add("Tên Sách");
                 cmb_AttributesFind.Items.Add("Tác Giả");
-                cmb_AttributesFind.Items.Add("Đã mượn");
+                cmb_AttributesFind.Items.Add("Chưa Mượn");
             }
             else
             {
@@ -84,6 +78,8 @@ namespace Library_Management_App.FORMS
                 cmb_AttributesFind.Items.Add("Tên");
                 cmb_AttributesFind.Items.Add("Địa chỉ");
                 cmb_AttributesFind.Items.Add("Số điện thoại");
+                refreshBookID();
+                refreshPatronID();
             }
             cmb_AttributesFind.SelectedIndex = 0;
         }
@@ -459,12 +455,46 @@ namespace Library_Management_App.FORMS
         }
 
         // TAB PAGE TICKET MANAGEMENT
+        private void refreshBookID()
+        {
+            cmb_BookIDs.Items.Clear();
+            List<int> lstB = new List<int>();
+            using (Library_ManagementEntities _entity = new Library_ManagementEntities())
+            {
+                lstB = _entity.Books.Where(s => s.availability == true).Select(s => s.book_ID).ToList();
+            }
+            foreach (int id in lstB)
+            {
+                cmb_BookIDs.Items.Add(id);
+            }
+        }
+        private void refreshPatronID()
+        {
+            cmb_PatronIDs.Items.Clear();
+            List<int> lstP = new List<int>();
+            using (Library_ManagementEntities _entity = new Library_ManagementEntities())
+            {
+                lstP = _entity.Patrons.Select(s => s.patron_ID).ToList();
+            }
+            foreach (int id in lstP)
+            {
+                cmb_PatronIDs.Items.Add(id);
+            }
+
+        }
         private void cmb_ModifyType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmb_ModifyType.SelectedIndex == 0)
             {
                 clearFields();
-                lbl_Id.Text = (info.getLatestId() + 1).ToString();
+                if (dgv_TicketModify.Rows.Count != 0)
+                {
+                    lbl_Id.Text = (info.getLatestId() + 1).ToString();
+                }
+                else
+                {
+                    lbl_Id.Text = "0";
+                }
                 dgv_TicketModify.Enabled = false;
                 cmb_BookIDs.Enabled = true;
                 cmb_PatronIDs.Enabled = true;
@@ -473,8 +503,6 @@ namespace Library_Management_App.FORMS
             {
                 clearFields();
                 dgv_TicketModify.Enabled = true;
-                //cmb_BookIDs.Enabled = false;
-                //cmb_PatronIDs.Enabled = false;
             }
             else
             {
@@ -511,8 +539,8 @@ namespace Library_Management_App.FORMS
         private void addTicket()
         {
             tb_Checkout ticket = new tb_Checkout();
-            ticket.book_ID = int.Parse(cmb_BookIDs.SelectedItem.ToString());
-            ticket.patron_ID = int.Parse(cmb_PatronIDs.SelectedItem.ToString());
+            ticket.book_ID = Convert.ToInt32(cmb_BookIDs.SelectedItem);
+            ticket.patron_ID = Convert.ToInt32(cmb_PatronIDs.SelectedItem);
             ticket.checkout_Date = DateTime.Now;
             ticket.due_Date = dtp_DueDate.Value;
 
@@ -521,6 +549,7 @@ namespace Library_Management_App.FORMS
             {
                 MessageBox.Show("Thêm thành công! ...", "Insert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFields();
+                refreshBookID();
                 info.showAllTickets(dgv_TicketModify);
             }
             else
@@ -548,6 +577,7 @@ namespace Library_Management_App.FORMS
                 {
                     MessageBox.Show("Sửa thành công! ...", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFields();
+                    refreshBookID();
                     info.showAllTickets(dgv_TicketModify);
                 }
                 else
@@ -566,6 +596,7 @@ namespace Library_Management_App.FORMS
                 {
                     MessageBox.Show("Xoá thành công! ...", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFields();
+                    refreshBookID();
                     info.showAllTickets(dgv_TicketModify);
                 }
                 else

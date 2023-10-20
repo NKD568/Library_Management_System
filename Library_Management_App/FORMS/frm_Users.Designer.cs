@@ -221,9 +221,11 @@
             this.lbl_IdUser.AutoSize = true;
             this.lbl_IdUser.Location = new System.Drawing.Point(69, 75);
             this.lbl_IdUser.Name = "lbl_IdUser";
-            this.lbl_IdUser.Size = new System.Drawing.Size(0, 48);
+            this.lbl_IdUser.Size = new System.Drawing.Size(28, 48);
             this.lbl_IdUser.TabIndex = 5;
+            this.lbl_IdUser.Text = ".";
             this.lbl_IdUser.Visible = false;
+            this.lbl_IdUser.TextChanged += new System.EventHandler(this.lbl_IdUser_TextChanged);
             // 
             // label8
             // 

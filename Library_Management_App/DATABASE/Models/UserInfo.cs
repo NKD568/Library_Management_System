@@ -104,15 +104,15 @@ namespace Library_Management_App.DATABASE.Models
         }
         public void modifyDataGridViewColumn(DataGridView dgv)
         {
-            dgv.Columns.RemoveAt(2);
             dgv.Columns[0].HeaderText = "ID";
             dgv.Columns[1].HeaderText = "Tên";
-            dgv.Columns[2].HeaderText = "Email";
-            dgv.Columns[3].HeaderText = "Cấp";
+            dgv.Columns[2].Visible = false;
+            dgv.Columns[3].HeaderText = "Email";
+            dgv.Columns[4].HeaderText = "Cấp";
             dgv.Columns[0].Width = 88;
             dgv.Columns[1].Width = 200;
-            dgv.Columns[2].Width = 300;
-            dgv.Columns[3].Width = 88;
+            dgv.Columns[3].Width = 300;
+            dgv.Columns[4].Width = 88;
         }
 
     }

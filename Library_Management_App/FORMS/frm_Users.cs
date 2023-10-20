@@ -233,7 +233,14 @@ namespace Library_Management_App.FORMS
             if (cmb_ModifyType.SelectedIndex == 0)
             {
                 clearFields();
-                lbl_IdUser.Text = (info.getLatestId() + 1).ToString();
+                if(dgv_UserModify.Rows.Count != 0)
+                {
+                    lbl_IdUser.Text = (info.getLatestId() + 1).ToString();
+                }
+                else
+                {
+                    lbl_IdUser.Text = "0";
+                }
                 setVisibleControls(true);
                 lbl_UserPassword.Visible = true;
                 txt_UserPassword.Visible = true;
@@ -241,6 +248,7 @@ namespace Library_Management_App.FORMS
             }
             else if (cmb_ModifyType.SelectedIndex == - 1)
             {
+                clearFields();
                 setVisibleControls(false);
             }
             else
@@ -277,6 +285,7 @@ namespace Library_Management_App.FORMS
                 {                   
                     lbl_IdUser.Text = row.Cells[0].Value.ToString();
                     txt_NameUser.Text = row.Cells[1].Value.ToString();
+                    txt_UserPassword.Text = row.Cells[2].Value.ToString();
                     txt_EmailUser.Text = row.Cells[3].Value.ToString();
                     cmb_LevelUser.SelectedItem = row.Cells[4].Value;
                 }
@@ -286,9 +295,9 @@ namespace Library_Management_App.FORMS
         {
             tb_UserInfo user = new tb_UserInfo();
             user.username = txt_NameUser.Text;
-            user.email = txt_EmailUser.Text;
-            user.user_level = cmb_LevelUser.SelectedIndex;
             user.password = txt_UserPassword.Text;
+            user.email = txt_EmailUser.Text;
+            user.user_level = Convert.ToInt32(cmb_LevelUser.SelectedItem);
 
             bool result = info.insertNewUser(user);
             if (result)
@@ -309,9 +318,10 @@ namespace Library_Management_App.FORMS
                 tb_UserInfo user = new tb_UserInfo();
                 user.user_ID = int.Parse(lbl_IdUser.Text);
                 user.username = txt_NameUser.Text;
-                user.email = txt_EmailUser.Text;
-                user.user_level = cmb_LevelUser.SelectedIndex;
                 user.password = txt_UserPassword.Text;
+                user.email = txt_EmailUser.Text;
+                user.user_level = Convert.ToInt32(cmb_LevelUser.SelectedItem);
+
 
                 bool result = info.updateUser(user);
                 if (result)
@@ -372,6 +382,7 @@ namespace Library_Management_App.FORMS
                         if (txt_UserPassword.Text == string.Empty)
                         {
                             MessageBox.Show("Hãy nhập mật khẩu!");
+                            return;
                         }
                         addUser();
                         break;
@@ -419,6 +430,31 @@ namespace Library_Management_App.FORMS
         private bool validateEmailAddress(string emailAddress)
         {
             return Regex.IsMatch(emailAddress, @"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
+        }
+
+        private void lbl_IdUser_TextChanged(object sender, EventArgs e)
+        {
+            if(cmb_ModifyType.SelectedIndex == 0 || cmb_ModifyType.SelectedIndex == -1 || lbl_IdUser.Text == "")
+            {
+                return;
+            }
+            int id = Convert.ToInt32(lbl_IdUser.Text);
+            if (cmb_ModifyType.SelectedIndex == 1)
+            {
+
+                if (frm_Login.currentUserId == id)
+                {
+                    lbl_UserPassword.Visible = true;
+                    txt_UserPassword.Visible = true;
+                }
+                else
+                {
+                    lbl_UserPassword.Visible = false;
+                    txt_UserPassword.Visible = false;
+                }
+            }
+
+
         }
     }
 }

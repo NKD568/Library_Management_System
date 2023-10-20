@@ -31,11 +31,16 @@ namespace Library_Management_App.FORMS
         }
         private void frm_Home_Shown(object sender, EventArgs e)
         {
-            //frm_Login login = new frm_Login();
-            //login.ShowDialog();
+            this.Enabled = false;
+            frm_Login login = new frm_Login();
+            login.Show();
         }
         private void frm_Home_Activated(object sender, EventArgs e)
         {
+            if (frm_Login.isLoginedIn)
+            {
+                this.Enabled = true;
+            }
             if (frm_Login.currentUserType != UserType.Admin)
             {
                 btn_User.Visible = false;
