@@ -28,6 +28,12 @@ namespace Library_Management_App.FORMS
             btn_Ticket.Image = Image.FromFile("../../IMAGES/ic_ticket.png");       
             btn_Chart.Image = Image.FromFile("../../IMAGES/ic_statistic.png");
             btn_User.Image = Image.FromFile("../../IMAGES/ic_Users.png");
+
+
+            lbl_LatestBooksTag.Visible = false;
+            pan_LatestBooks.Visible = false;
+            lbl_PopularBooksTag.Visible = false;
+            pan_PopularBooks.Visible = false;
         }
         private void frm_Home_Shown(object sender, EventArgs e)
         {
@@ -49,12 +55,13 @@ namespace Library_Management_App.FORMS
 
         private void btn_Book_Click(object sender, EventArgs e)
         {
-            frm_Books Book = new frm_Books();
+            Form1 Book = new Form1();
             Book.ShowDialog();
         }
         private void btn_Patron_Click(object sender, EventArgs e)
         {
-
+            Form2 Patron = new Form2();
+            Patron.ShowDialog();
         }
         private void btn_Ticket_Click(object sender, EventArgs e)
         {

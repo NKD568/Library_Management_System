@@ -35,6 +35,8 @@ namespace Library_Management_App.FORMS
         {
             this.BackgroundImage = Image.FromFile("../../IMAGES/bg_Login.jpg");
             this.CenterToScreen();
+
+            btn_Forgot.Visible = false;
         }
 
         private void emptyPlaceHolderText(object sender, EventArgs e)

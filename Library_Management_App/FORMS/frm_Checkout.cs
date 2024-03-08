@@ -276,7 +276,7 @@ namespace Library_Management_App.FORMS
                                         Id = s.patron_ID,
                                         Name = s.name,
                                         Address = s.address,
-                                        Phone = s.phone
+                                        Phone = s.phone.ToString()
                                     }).ToList();
                                     break;
                                 }
@@ -304,7 +304,8 @@ namespace Library_Management_App.FORMS
                                 }
                             case 3: // Find by Phone
                                 {
-                                    lst = _entity.Patrons.Where(s => s.phone == numData).Select(s => new PatronInfo
+                                    var num = numData.ToString();
+                                    lst = _entity.Patrons.Where(s => s.phone == num).Select(s => new PatronInfo
                                     {
                                         Id = s.patron_ID,
                                         Name = s.name,

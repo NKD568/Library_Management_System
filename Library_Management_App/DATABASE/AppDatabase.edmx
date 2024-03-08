@@ -31,7 +31,7 @@
           <Property Name="patron_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="phone" Type="int" Nullable="false" />
+          <Property Name="phone" Type="char" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="UserInfos">
           <Key>
@@ -85,21 +85,11 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Library_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tb_UserInfo">
-          <Key>
-            <PropertyRef Name="user_ID" />
-          </Key>
-          <Property Name="user_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="user_level" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="Library_ManagementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="UserInfos" EntityType="Library_ManagementModel.tb_UserInfo" />
           <EntitySet Name="Books" EntityType="Library_ManagementModel.tb_Book" />
           <EntitySet Name="Checkout" EntityType="Library_ManagementModel.tb_Checkout" />
           <EntitySet Name="Patrons" EntityType="Library_ManagementModel.tb_Patron" />
+          <EntitySet Name="UserInfos" EntityType="Library_ManagementModel.tb_UserInfo" />
           <AssociationSet Name="FK_Checkout_Books" Association="Library_ManagementModel.FK_Checkout_Books">
             <End Role="Book" EntitySet="Books" />
             <End Role="Checkout" EntitySet="Checkout" />
@@ -108,7 +98,7 @@
             <End Role="Patron" EntitySet="Patrons" />
             <End Role="Checkout" EntitySet="Checkout" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="tb_Book">
           <Key>
             <PropertyRef Name="book_ID" />
@@ -138,8 +128,18 @@
           <Property Name="patron_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="phone" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Checkouts" Relationship="Library_ManagementModel.FK_Checkout_Patrons" FromRole="Patron" ToRole="Checkout" />
+        </EntityType>
+        <EntityType Name="tb_UserInfo">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_level" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Checkout_Books">
           <End Type="Library_ManagementModel.tb_Book" Role="Book" Multiplicity="1" />
@@ -165,23 +165,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Library_ManagementModelStoreContainer" CdmEntityContainer="Library_ManagementEntities">
-          <EntitySetMapping Name="UserInfos">
-            <EntityTypeMapping TypeName="Library_ManagementModel.tb_UserInfo">
-              <MappingFragment StoreEntitySet="UserInfos">
-                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="user_level" ColumnName="user_level" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="Library_ManagementModel.tb_Book">
               <MappingFragment StoreEntitySet="Books">
@@ -210,6 +199,17 @@
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="patron_ID" ColumnName="patron_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfos">
+            <EntityTypeMapping TypeName="Library_ManagementModel.tb_UserInfo">
+              <MappingFragment StoreEntitySet="UserInfos">
+                <ScalarProperty Name="user_level" ColumnName="user_level" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

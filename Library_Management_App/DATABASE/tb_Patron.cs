@@ -23,7 +23,7 @@ namespace Library_Management_App.DATABASE
         public int patron_ID { get; set; }
         public string name { get; set; }
         public string address { get; set; }
-        public int phone { get; set; }
+        public string phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_Checkout> Checkouts { get; set; }

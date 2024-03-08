@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Library_Management_App</RootNamespace>
     <AssemblyName>Library_Management_App</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,7 +74,9 @@
       <DependentUpon>AppDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="DATABASE\Models\BookInfo.cs" />
+    <Compile Include="DATABASE\Models\BookInfor.cs" />
     <Compile Include="DATABASE\Models\CheckoutInfo.cs" />
+    <Compile Include="DATABASE\Models\ConnectSQL.cs" />
     <Compile Include="DATABASE\Models\PatronInfo.cs" />
     <Compile Include="DATABASE\Models\UserInfo.cs" />
     <Compile Include="DATABASE\tb_Book.cs">
@@ -88,11 +91,17 @@
     <Compile Include="DATABASE\tb_UserInfo.cs">
       <DependentUpon>AppDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="FORMS\frm_Books.cs">
+    <Compile Include="FORMS\FrmBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORMS\frm_Books.Designer.cs">
-      <DependentUpon>frm_Books.cs</DependentUpon>
+    <Compile Include="FORMS\FrmBook.designer.cs">
+      <DependentUpon>FrmBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmNguoiMuonSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmNguoiMuonSach.designer.cs">
+      <DependentUpon>frmNguoiMuonSach.cs</DependentUpon>
     </Compile>
     <Compile Include="FORMS\frm_Checkout.cs">
       <SubType>Form</SubType>
@@ -120,8 +129,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FORMS\frm_Books.resx">
-      <DependentUpon>frm_Books.cs</DependentUpon>
+    <EmbeddedResource Include="FORMS\FrmBook.resx">
+      <DependentUpon>FrmBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmNguoiMuonSach.resx">
+      <DependentUpon>frmNguoiMuonSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frm_Checkout.resx">
       <DependentUpon>frm_Checkout.cs</DependentUpon>

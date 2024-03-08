@@ -46,7 +46,7 @@ namespace Library_Management_App.DATABASE.Models
             }
             catch
             {
-                MessageBox.Show("Exception while Showing All Users!");
+                MessageBox.Show("Exception while Showing All Tickets!");
             }
         }
         public bool insertNewTicket(tb_Checkout ticket)
